@@ -1,0 +1,3 @@
+[submodule "prism_annotation"]
+	path = prism_annotation
+	url = https://github.com/OnizukaLab/prism_annotation.git
