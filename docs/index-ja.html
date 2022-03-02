@@ -40,7 +40,7 @@
     <link rel="shortcut icon" href="images/favicon.png">
     
     <!-- highlight.js -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/github-dark.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/vs.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
     
@@ -84,7 +84,7 @@
            <p>
           本データセットは，医薬品の奏功情報を文脈付きでアノテーションした初めてのデータセットです．
           患者が作成したブログ記事をクロールし，そこで報告されている医薬品の効用についてアノテーションしました．
-          具体的には，奏功情報を記述するスパンを特定し，関連する薬剤名，反応の症状を表す標準コード（MedDRA, ICD-10 に準拠），効果の種類を示すラベルをアノテーションしています．
+          具体的には，奏功情報を記述するスパンを特定し，関連する薬剤名，反応の症状を表す ICD-10 コード，効果の種類を示すラベルをアノテーションしています．
           </p>
           <p>
           本データセットについての詳細は下記の文献をご参照ください．</br>
@@ -94,30 +94,51 @@
 
             <h3>データセット</h3>
              <p>
-             メタデータのみの公開です．</br>
+             URL とアノテーション情報のみからなるメタデータを公開します．</br>
              <a href="https://github.com/yukiar/adr-jp/blob/master/data/ADR_paragraph_LREC2020.json">ADR_paragraph_LREC2020.json</a>
              </p>
              <p>
-             データセットは下記のような構成になっています．
+             データ例を下記に示します．
              </p>
              <p>
              <pre>
                  <code class="json">
 [
-    {'sentence': '木曜日に受けて、金曜日は元気で、土曜に微熱と倦怠感でいつもダウン',
+    {'url': 'http://ameblo.jp/greengables2012/entry-11341085819.html',
+     'sentence': '木曜日に受けて、金曜日は元気で、土曜に微熱と倦怠感でいつもダウン',
      'index': '354',
      'label': {'span': '微熱',
         'start_idx': '20',
         'end_idx': '21',
         'medicine': 'カルボフラチン',
         'icd10': 'R509',
-        'effect_type': 'side-effect-positive'},
-     'url': 'http://ameblo.jp/greengables2012/entry-11341085819.html'}
+        'effect_type': 'side-effect-positive'}
+    }
     ...
 ]
                  </code>
              </pre>
-             
+             </p>
+             <p>
+                データ構造は下記の通りです．
+                <dl>
+                    <dt>url</dt>
+                    <dd>アノテーション対象のブログ記事の URL．この情報を基に文章を復元してください．</dd>
+                    <dt>sentence</dt>
+                    <dd>アノテーション対象の文．</dd>
+                    <dt>index</dt>
+                    <dd>データのインデックス．</dd>
+                    <dt>label</dt>
+                    <dd>
+                        アノテーション情報．
+                        <br><b>"span": </b>奏功情報を示すスパンの文字列
+                        <br><b>"start_idx": </b>スパンの文内での開始位置（1-origin）
+                        <br><b>"end_idx": </b>スパンの文内での終了位置（1-origin）
+                        <br><b>"medicine": </b>医薬品名
+                        <br><b>"idc10": </b>ICD10 コード
+                        <br><b>"effect_type": </b>効果の種類
+                    </dd>
+                </dl>
              </p>
               <p>
               You may reconstruct the full annotation files using <a href="https://github.com/OnizukaLab/prism_annotation" target="_blank">this script</a>. 
