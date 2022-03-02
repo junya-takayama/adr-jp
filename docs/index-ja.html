@@ -38,7 +38,12 @@
     <meta name="msapplication-TileColor" content="#3372DF">
 
     <link rel="shortcut icon" href="images/favicon.png">
-
+    
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="/js/highlight/styles/default.css">
+    <script src="/js/highlight/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>  
+    
     <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
     <!--
     <link rel="canonical" href="http://www.example.com/">
@@ -93,24 +98,24 @@
              <a href="https://github.com/yukiar/adr-jp/blob/master/data/ADR_paragraph_LREC2020.json">ADR_paragraph_LREC2020.json</a>
              </p>
              <p>
-             <div class="module_code">▼ json</div>
-             <pre class="prettyprint">
-             [
-                 {"sentence": "咳はずいぶん減りました", 
-                  "index": "1", 
-                  "label": 
-                     {"span": "咳はずいぶん減りました", 
-                      "start_idx": "1", 
-                      "end_idx": "11", 
-                      "medicine": "ツロブテロール", 
-                      "icd10": "R05", 
-                      "effect_type": 
-                      "response-positive"
-                     }, 
-                  "url": "https://ameblo.jp/simode-era/entry-12442440196.html"
-                 },
-                 
-             ]
+             <pre>
+                 <code>
+[
+    {
+        "sentence": "咳はずいぶん減りました", 
+        "index": "1", 
+        "label": {
+            "span": "咳はずいぶん減りました", 
+            "start_idx": "1", 
+            "end_idx": "11", 
+            "medicine": "ツロブテロール", 
+            "icd10": "R05", 
+            "effect_type": "response-positive"}, 
+        "url": "https://ameblo.jp/simode-era/entry-12442440196.html"
+    },
+    ...
+]
+                 </code>
              </pre>
              </p>
               <p>
@@ -138,7 +143,5 @@
       </main>
     </div>
     <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-    <script type="text/javascript" src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
-    <script>prettyPrint();</script>
   </body>
 </html>
