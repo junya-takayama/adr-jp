@@ -48,6 +48,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.teal-red.min.css">
     <link rel="stylesheet" href="styles.css">
+    
   </head>
   <body>
     <div class="demo-layout mdl-layout mdl-layout--fixed-header mdl-js-layout mdl-color--grey-100">
@@ -91,6 +92,27 @@
              メタデータのみの公開です．</br>
              <a href="https://github.com/yukiar/adr-jp/blob/master/data/ADR_paragraph_LREC2020.json">ADR_paragraph_LREC2020.json</a>
              </p>
+             <p>
+             <div class="module_code">▼ json</div>
+             <pre class="prettyprint">
+             [
+                 {"sentence": "咳はずいぶん減りました", 
+                  "index": "1", 
+                  "label": 
+                     {"span": "咳はずいぶん減りました", 
+                      "start_idx": "1", 
+                      "end_idx": "11", 
+                      "medicine": "ツロブテロール", 
+                      "icd10": "R05", 
+                      "effect_type": 
+                      "response-positive"
+                     }, 
+                  "url": "https://ameblo.jp/simode-era/entry-12442440196.html"
+                 },
+                 
+             ]
+             </pre>
+             </p>
               <p>
               You may reconstruct the full annotation files using <a href="https://github.com/OnizukaLab/prism_annotation" target="_blank">this script</a>. 
               </p>
@@ -116,5 +138,7 @@
       </main>
     </div>
     <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <script>prettyPrint();</script>
   </body>
 </html>
